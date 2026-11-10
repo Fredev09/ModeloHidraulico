@@ -1,0 +1,44 @@
+{
+  "algoritmo": "Q-Learning / Contextual Bandit RLHF",
+  "alpha": 0.25,
+  "epsilon": 0.1,
+  "q_table": {
+    "COOLER_CRITICO": {
+      "PARADA_CORRECTIVA": 0.9,
+      "PLAN_PROGRAMADO": 0.2,
+      "INSPECCION_PURGA": 0.6,
+      "ALIVIO_CARGA": 0.4
+    },
+    "VALVULA_CRITICA": {
+      "PARADA_CORRECTIVA": 0.75,
+      "PLAN_PROGRAMADO": 0.3,
+      "INSPECCION_PURGA": 0.5,
+      "ALIVIO_CARGA": 0.35
+    },
+    "BOMBA_CRITICA": {
+      "PARADA_CORRECTIVA": 0.8,
+      "PLAN_PROGRAMADO": 0.25,
+      "INSPECCION_PURGA": 0.45,
+      "ALIVIO_CARGA": 0.3
+    },
+    "FALLA_MULTIPLE": {
+      "PARADA_CORRECTIVA": 0.9625,
+      "PLAN_PROGRAMADO": 0.1,
+      "INSPECCION_PURGA": 0.4,
+      "ALIVIO_CARGA": 0.2
+    },
+    "DESGASTE_MODERADO": {
+      "PARADA_CORRECTIVA": 0.15,
+      "PLAN_PROGRAMADO": 0.85,
+      "INSPECCION_PURGA": 0.7,
+      "ALIVIO_CARGA": 0.5
+    },
+    "OPERACION_NOMINAL": {
+      "PARADA_CORRECTIVA": 0.05,
+      "PLAN_PROGRAMADO": 0.4,
+      "INSPECCION_PURGA": 0.6,
+      "ALIVIO_CARGA": 0.2
+    }
+  },
+  "total_interacciones": 1
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monitor hidráulico</title>
+  <link rel="stylesheet" href="/static/styles.css?v=13">
+</head>
+<body>
+  <header>
+    <h1>
+      <svg class="icono-svg" style="width: 24px; height: 24px; vertical-align: -3px; color: #0f766e; margin-right: 6px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      Monitor del sistema hidráulico
+    </h1>
+    <p class="subtitulo">Prototipo académico · Red Neuronal + LLM Generativo (Pipeline) + Aprendizaje por Refuerzo (RLHF)</p>
+    <p id="estado-modelo" class="estado-modelo" aria-live="polite"></p>
+  </header>
+
+  <main>
+    <section class="tarjeta activa">
+      <h2>Analizar archivo de sensores</h2>
+      <p>Archivo <code>.zip</code> con los 16 archivos de sensores en formato del dataset. Cada fila se analiza como un ciclo independiente.</p>
+      <form id="form-archivo">
+        <label class="zona-carga" id="zona-carga" for="archivo-zip">
+          <svg class="icono-svg" style="width: 38px; height: 38px; color: #64748b; margin-bottom: 8px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="M12 12v9"/><path d="m16 16-4-4-4 4"/></svg>
+          <span class="zona-texto">Arrastra el <code>.zip</code> aquí o selecciónalo</span>
+          <span class="boton-falso">Elegir archivo</span>
+          <input type="file" id="archivo-zip" name="archivo" accept=".zip" required>
+          <span id="nombre-archivo" class="nombre-archivo" hidden></span>
+        </label>
+        <button type="submit" id="btn-predecir">Predecir estado</button>
+      </form>
+      <p id="error-archivo" class="error" role="alert" hidden></p>
+    </section>
+
+    <section id="resultados" hidden>
+      <h2>Resultados</h2>
+      <p id="resumen-ciclos"></p>
+      <div id="contenedor-ciclos"></div>
+    </section>
+
+    <section class="seccion-rl">
+      <details id="details-rl">
+        <summary>
+          <svg class="icono-svg" style="width: 18px; height: 18px; margin-right: 6px; color: #7c3aed; vertical-align: -3px;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2Z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2Z"/></svg>
+          Panel del Agente de Aprendizaje por Refuerzo (Matriz Q)
+        </summary>
+        <p style="font-size: 0.85rem; color: #475569; margin: 8px 0;">
+          El agente utiliza <strong>Contextual Q-Learning</strong> con actualización de Bellman basada en el feedback (calificaciones) de los operadores. La celda resaltada en morado indica la estrategia óptima aprendida para cada diagnóstico.
+        </p>
+        <div id="contenedor-tabla-q" class="tabla-q-container">
+          <p>Cargando matriz Q...</p>
+        </div>
+      </details>
+    </section>
+  </main>
+
+  <script src="/static/app.js?v=14"></script>
+</body>
+</html>

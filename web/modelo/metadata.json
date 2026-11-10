@@ -1,0 +1,64 @@
+{
+  "dataset": "UCI Condition Monitoring of Hydraulic Systems",
+  "n_features": 288,
+  "sensor_order": [
+    "PS1",
+    "PS2",
+    "PS3",
+    "PS4",
+    "PS5",
+    "PS6",
+    "EPS1",
+    "FS1",
+    "FS2",
+    "TS1",
+    "TS2",
+    "TS3",
+    "TS4",
+    "VS1",
+    "CE",
+    "CP"
+  ],
+  "feature_order_file": "columnas_features.json",
+  "particiones_file": "particiones.npz",
+  "artefacto_desplegable": "wrapper_sin_escalar",
+  "entrada_desplegable": "288 características sin escalar",
+  "salida_eficiencia": "porcentaje original (MinMax inverso integrado)",
+  "targets": {
+    "cooler": {
+      "original_to_encoded": {
+        "3": 0,
+        "20": 1,
+        "100": 2
+      },
+      "classes": 3
+    },
+    "valvula": {
+      "original_to_encoded": {
+        "73": 0,
+        "80": 1,
+        "90": 2,
+        "100": 3
+      },
+      "classes": 4
+    },
+    "bomba": {
+      "original_to_encoded": {
+        "0": 0,
+        "1": 1,
+        "2": 2
+      },
+      "classes": 3
+    },
+    "eficiencia": {
+      "source": "SE.txt",
+      "aggregation": "mean per cycle",
+      "unit": "%"
+    },
+    "falla": {
+      "description": "Predicción directa si la máquina va a fallar (1) o no (0)",
+      "classes": 2,
+      "criterio": "Falla crítica en enfriador (3%), válvula (73%) o bomba (fuga severa)"
+    }
+  }
+}
