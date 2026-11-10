@@ -328,7 +328,7 @@ function renderizarResultados(datos) {
                 <span class="ai-dot-pulse"></span>
                 <span>Asistente Autónomo · IA Generativa</span>
               </div>
-              <strong>Recomendación Técnica Especializada (Qwen-2.5 Instruct)</strong>
+              <strong>Recomendación Técnica Especializada (${rec.modelo || "IA Generativa"})</strong>
             </div>
           </div>
         </div>
